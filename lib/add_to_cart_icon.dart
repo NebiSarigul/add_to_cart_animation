@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class AddToCartIcon extends StatefulWidget {
   final GlobalKey<CartIconKey> key;
@@ -19,7 +18,7 @@ class AddToCartIcon extends StatefulWidget {
 class CartIconKey extends State<AddToCartIcon>
     with SingleTickerProviderStateMixin {
   // Improvement/Suggestion 4.1: Adding 'badget-widget' counter
-  RxString _qtdeBadge = "0".obs;
+  String _qtdeBadge = "0";
 
   late final AnimationController _controller = AnimationController(
     duration: const Duration(milliseconds: 225),
@@ -65,12 +64,10 @@ class CartIconKey extends State<AddToCartIcon>
                       Theme.of(context).colorScheme.secondary,
                 ),
                 constraints: BoxConstraints(minWidth: 16, minHeight: 16),
-                child: Obx(
-                  () => Text(
-                    _qtdeBadge.value,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 10),
-                  ),
+                child: Text(
+                  _qtdeBadge,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 10),
                 ),
               )),
         ],
@@ -91,7 +88,7 @@ class CartIconKey extends State<AddToCartIcon>
   // Improvement/Suggestion 4.3: Adding 'badget-widget' counter Set-State
   void changeQtdeBadgeState(String? value) {
     if (value != null) {
-      _qtdeBadge.value = value;
+      _qtdeBadge = value;
     }
   }
 
