@@ -89,9 +89,9 @@ class CartIconKey extends State<AddToCartIcon>
   void changeQtdeBadgeState(String? value) {
     if (value != null) {
       _qtdeBadge = value;
-      if (mounted) {
+      Future.delayed(Duration.zero, () async {
         setState(() {});
-      }
+      });
     }
   }
 
