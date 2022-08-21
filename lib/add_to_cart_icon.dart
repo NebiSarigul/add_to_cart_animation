@@ -76,15 +76,17 @@ class CartIconKey extends State<AddToCartIcon>
   }
 
   // Improvement/Suggestion 4.2: Change method-name + incorporating badge-quantity as optional-parameter
-  Future<void> runCartAnimation([String? badgeQuantity]) async {
+  Future<void> runCartAnimation([
+    String? badgeQuantity,
+  ]) async {
     await _controller.forward();
     await _controller.reverse();
-    _changeQtdeBadgeState(badgeQuantity);
+    changeQtdeBadgeState(badgeQuantity);
     return;
   }
 
   // Improvement/Suggestion 4.3: Adding 'badget-widget' counter Set-State
-  void _changeQtdeBadgeState(String? value) {
+  void changeQtdeBadgeState(String? value) {
     if (value != null) {
       setState(() {
         _qtdeBadge = value;
@@ -96,7 +98,7 @@ class CartIconKey extends State<AddToCartIcon>
   Future<void> runClearCartAnimation() async {
     await _controller.forward();
     await _controller.reverse();
-    _changeQtdeBadgeState("0");
+    changeQtdeBadgeState("0");
     return;
   }
 }
